@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Statistics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+
+  </head>
+  <style>
+      
+      h1{
+          color:white;
+          text-shadow: 2px 2px 4px #000000;
+      }
+      
+    th{
+        color: white;
+      text-align: center;
+        text-shadow: 2px 2px 4px #000000;
+    }
+      
+    td{
+        color: white;
+      text-align: center;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    p{
+        color:white;
+      text-align: center;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .embed-container {
+   position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} 
+  
+.embed-container iframe, .embed-container object,.embed-container iframe
+ {position: absolute; top: 0; left: 0; width: 100%; height: 65%;} 
+ 
+ small{
+   position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}
+    </style>
+  <body>
+      
+       <nav class="navbar">
+    <a href= "index.html" class="logo">
+      <img src="logo.png" alt="logo">
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="WorldMap.html">Worldwide Statistics</a></li>
+      <li class="nav-item"><a href="contacts.html">Emergency Contacts</a></li>
+    </ul>
+  </nav>
+
+
+    <div class="container">
+      <h1 class="text-center mt-5">Global COVID-19 Live Data</h1>
+      <p> Updated daily. Click Refresh Data button to see new data.</p>
+      
+      <br><br>
+      <table class="table table-bordered">
+      <thead>
+  <tr>
+    
+    <th> Total Cases</th>
+    <th> Total Deaths</th>
+    <th> Total Recovered</th>
+    
+  </tr>
+  <tbody>
+    <tr id="data">
+   
+  </tr>
+  </tbody>
+<table>
+<br>
+  <button onclick="refreshData()" class="btn btn-danger btn-block">
+    Refresh Data
+  </button>
+
+</div>
+
+<br>
+
+<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Coronavirus COVID-19  World Map" src="//www.arcgis.com/apps/Embed/index.html?webmap=b346352e622447fe82e7370b9eff3b5a&extent=-147.9173,-41.8507,67.9421,55.8155&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legend=true&active_panel=details&disable_scroll=false&theme=dark"></iframe></div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+
+<script>
+  window.alert ("To view map in Google Chrome please enable third-party cookies.\n Go to Settings > Privacy and Security > Cookies and site data > Switch off Block third-party cookies.");
+ 
+    init()
+
+
+    function init(){
+      var url= "https://api.covid19api.com/summary"
+
+     var data = '';
+     
+
+      $.get(url,function(data){
+        console.log (data)
+
+        data =`
+        
+        <td>${data.Global.TotalConfirmed}</td>
+         <td>${data.Global.TotalDeaths}</td>
+          <td>${data.Global.TotalRecovered}</td>
+          
+          `
+          
+          $("#data").html(data)
+      })
+    
+
+  }
+
+  function refreshData(){
+    clearData()
+    init()
+  }
+
+   function clearData(){
+      $("#data").empty()
+      init()
+    }
+
+ 
+
+
+   
+  </script>
+
+</html>

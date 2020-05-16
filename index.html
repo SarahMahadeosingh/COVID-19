@@ -1,0 +1,87 @@
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<link rel="stylesheet" href="styles.css">
+<title>Coronavirus</title>
+</head>
+<style>
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    
+  }
+
+  @media screen and (max-width: 600px) {
+  body{
+    display: flex;
+    flex-grow: 8;
+		flex-direction: column;
+	}
+}
+ 
+
+</style>
+<body>
+
+    <nav class="navbar">
+    <a href= "index.html" class="logo">
+      <img src="logo.png" alt="logo">
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="WorldMap.html">Worldwide Statistics</a></li>
+      <li class="nav-item"><a href="contacts.html">Emergency Contacts</a></li>
+    </ul>
+  </nav>
+
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<div class="landing">
+
+<div class="vertical-menu">
+  <a href="#" class="active">Home</a>
+  <a href="relief.html">What Can You Do?</a>
+  <a href="Survey.html">Survey</a>
+  <a href="FAQs.html">FAQs</a>
+</div>
+  
+  <img name="slide" width= "1000px" height="600px">
+  
+  
+  <script>
+    var i= 0;
+    var images= [];
+    var time= 5000;
+
+    images [0]= 'virus_info.jpg';
+    images [1]= 'stay_at_home.jpg';
+    images [2] = 'thank-you.jpg';
+
+    function changeImg(){
+      document.slide.src= images[i];
+
+      if (i< images.length- 1){ i++;
+
+      }else{
+        i = 0;
+      }
+      
+      setTimeout("changeImg()", time);
+
+    }
+
+    window.onload= changeImg;
+
+
+  </script>
+    
+</body>
+</html>
